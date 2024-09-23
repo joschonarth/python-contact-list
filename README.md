@@ -67,3 +67,10 @@ python agenda.py
 
 * **`agenda.py`**: Arquivo principal que executa o programa.
 * **`contatos.pkl`**: Arquivo onde os contatos são armazenados em formato de objeto serializado com `pickle`.
+
+## 📞 Contato 
+
+<div>
+    <a href="https://www.linkedin.com/in/joschonarth/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+    <a href="mailto:joschonarth@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+</div>
