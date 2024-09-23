@@ -2,14 +2,14 @@
 
 Um projeto simples de **Agenda de Contatos** desenvolvido em Python, que permite ao usuário gerenciar sua lista de contatos de forma eficiente, onde toda a interação é realizada via terminal.
 
-## 🎥 Demonstração
+<!-- ## 🎥 Demonstração
 
-![Demonstração do Projeto](assets/agenda-demo.gif)
+![Demonstração do Projeto](assets/agenda-demo.gif) -->
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **Python**: Linguagem de programação principal do projeto.
-- **pickle**: Biblioteca padrão do Python para serialização e desserialização de objetos.
+- **[pickle](https://docs.python.org/3/library/pickle.html)**: Biblioteca padrão do Python para serialização e desserialização de objetos.
 - **[questionary](https://github.com/tmbo/questionary)**: Biblioteca para criar prompts interativos e amigáveis, melhorando a experiência do usuário.
 - **[rich](https://github.com/Textualize/rich)**: Biblioteca para criar saídas de texto mais ricas e estilizadas no terminal.
 
@@ -27,6 +27,7 @@ Um projeto simples de **Agenda de Contatos** desenvolvido em Python, que permite
 - **[os](https://docs.python.org/3/library/os.html)**: Módulo padrão do Python para interações com o sistema operacional.
 - **[pickle](https://docs.python.org/3/library/pickle.html)**: Módulo padrão do Python para serialização e desserialização de objetos.
 - **[questionary](https://github.com/tmbo/questionary)**: Biblioteca para criar prompts interativos no terminal.
+- **[prompt_toolkit](https://github.com/prompt-toolkit/python-prompt-toolkit)**: Biblioteca que fornece ferramentas para criar interfaces de linha de comando interativas.
 - **[rich](https://github.com/Textualize/rich)**: Biblioteca para criar saídas de texto ricas e estilizadas no terminal.
   - `rich.console.Console`: Para exibir mensagens formatadas no terminal.
   - `rich.table.Table`: Para criar e exibir tabelas no terminal.
@@ -34,11 +35,35 @@ Um projeto simples de **Agenda de Contatos** desenvolvido em Python, que permite
 
 ## ✅ Requisitos
 
-- [<img src="https://skillicons.dev/icons?i=python&theme=dark" width="25" align="center">](https://www.python.org/) Python 3.8+
+- [<img src="https://skillicons.dev/icons?i=python&theme=dark" width="25" align="center">](https://www.python.org/) Ter o Python instalado
 
 ## 🚀 Como Rodar o Projeto
 
 📌 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/python-agenda-contatos
+git clone https://github.com/joschonarth/python-contact-list
+```
+
+📌 2. Navegue até o diretório do projeto:
+
+```bash
+cd python-contact-list
+```
+
+📌 3. Instale as bibliotecas:
+
+```bash
+pip install prompt_toolkit questionary rich
+```
+
+📌 4. Execute o programa:
+
+```bash
+python agenda.py
+```
+
+## 📂 Estrutura do Projeto
+
+* **`agenda.py`**: Arquivo principal que executa o programa.
+* **`contatos.pkl`**: Arquivo onde os contatos são armazenados em formato de objeto serializado com `pickle`.
