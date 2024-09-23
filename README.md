@@ -72,6 +72,15 @@ python agenda.py
 * **`agenda.py`**: Arquivo principal que executa o programa.
 * **`contatos.pkl`**: Arquivo onde os contatos são armazenados em formato de objeto serializado com `pickle`.
 
+## Contribuições 🌟
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue com sugestões ou enviar um pull request com melhorias.
+
+
+## 📜 Licença 
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
 ## 📞 Contato 
 
 <div>
