@@ -2,9 +2,13 @@
 
 Um projeto simples de **Agenda de Contatos** desenvolvido em Python, que permite ao usuário gerenciar sua lista de contatos de forma eficiente, onde toda a interação é realizada via terminal.
 
-<!-- ## 🎥 Demonstração
+## 🎥 Demonstração
 
-![Demonstração do Projeto](assets/agenda-demo.gif) -->
+<div align="center">
+
+https://github.com/user-attachments/assets/1d07d22c-d4e8-4c8a-9786-f407f4918793
+
+</div>
 
 ## 🛠️ Tecnologias Utilizadas
 
