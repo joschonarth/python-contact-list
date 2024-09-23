@@ -22,10 +22,29 @@ def carregar_contatos():
 
 contatos = carregar_contatos()
 
-def adicionar_contato(contatos, nome, telefone, email):
-    if not nome or not telefone or not email:
-        console.print("Todos os campos devem ser preenchidos!", style="red")
-        return
+def solicitar_dados_contato():
+    nome = ""
+    while not nome:
+        nome = questionary.text("Digite o nome do contato:").ask()
+        if not nome:
+            console.print("O campo nome não pode estar vazio!", style="red")
+
+    telefone = ""
+    while not telefone:
+        telefone = questionary.text("Digite o telefone:").ask()
+        if not telefone:
+            console.print("O campo telefone não pode estar vazio!", style="red")
+
+    email = ""
+    while not email:
+        email = questionary.text("Digite o email:").ask()
+        if not email:
+            console.print("O campo email não pode estar vazio!", style="red")
+
+    return nome, telefone, email
+
+def adicionar_contato(contatos):
+    nome, telefone, email = solicitar_dados_contato()
     
     contato = {
         "nome": nome,
@@ -36,7 +55,11 @@ def adicionar_contato(contatos, nome, telefone, email):
     contatos.append(contato)
     salvar_contatos(contatos)
     console.print(f"\nContato {nome} adicionado com sucesso!", style="green")
-    input("\nPressione Enter para voltar...")
+    
+    cadastrar_mais = questionary.confirm("Deseja cadastrar mais contatos?").ask()
+    if cadastrar_mais:
+        clear()
+        adicionar_contato(contatos)
 
 def visualizar_contatos(contatos):
     if not contatos:
@@ -78,8 +101,11 @@ def visualizar_contatos_favoritos(contatos):
     console.print(table)
     input("\nPressione Enter para voltar...")
 
-
 def editar_contato(contatos):
+    if not contatos:
+        console.print("Nenhum contato cadastrado.", style="red")
+        input("\nPressione Enter para voltar...")
+        return
     tabela_contatos(contatos)
     nomes = [contato["nome"] for contato in contatos] + ["<< Voltar"]
     nome_selecionado = questionary.select("Selecione o contato que deseja editar:", choices=nomes).ask()
@@ -133,8 +159,11 @@ def favoritar_contato(contatos):
 
     input("\nPressione Enter para voltar...")
 
-
 def deletar_contato(contatos):
+    if not contatos:
+        console.print("Nenhum contato cadastrado.", style="red")
+        input("\nPressione Enter para voltar...")
+        return
     tabela_contatos(contatos)
     nomes = [contato["nome"] for contato in contatos] + ["<< Voltar"]
     nome_selecionado = questionary.select("Selecione o contato que deseja deletar:", choices=nomes).ask()
@@ -149,7 +178,6 @@ def deletar_contato(contatos):
             console.print(f"Contato {contato['nome']} deletado com sucesso!", style="red")
             input("\nPressione Enter para voltar...")
             break
-
 
 def tabela_contatos(contatos):
     table = Table(title="Contatos", box=box.SIMPLE)
@@ -168,40 +196,34 @@ def tabela_contatos(contatos):
 
 def menu_opcoes():
     opcoes = [
-        'Adicionar Contato',
-        'Visualizar Lista de Contatos',
-        'Editar Contato',
-        'Marcar/Desmarcar como Favorito',
-        'Visualizar Contatos Favoritos',
-        'Apagar Contato',
-        'Sair'
+        '➕ Adicionar Contato',
+        '📖 Visualizar Lista de Contatos',
+        '✏️  Editar Contato',
+        '⭐ Marcar/Desmarcar como Favorito',
+        '🌟 Visualizar Contatos Favoritos',
+        '❌ Apagar Contato',
+        '🚪 Sair'
     ]
-    return questionary.select("Menu Agenda", choices=opcoes).ask()
+    return questionary.select("📋 Lista de Contatos", choices=opcoes).ask()
 
 while True:
     clear()
     opcao = menu_opcoes()
 
     clear()
-    if opcao == 'Adicionar Contato':
-        nome = questionary.text("Digite o nome do contato:").ask()
-        telefone = questionary.text("Digite o telefone:").ask()
-        email = questionary.text("Digite o email:").ask()
-        adicionar_contato(contatos, nome, telefone, email)
-    elif opcao == 'Visualizar Lista de Contatos':
+    if 'Adicionar Contato' in opcao:
+        console.print("Novo Contato", style="green")
+        adicionar_contato(contatos)
+    elif 'Visualizar Lista de Contatos' in opcao:
         visualizar_contatos(contatos)
-    elif opcao == 'Editar Contato':
+    elif 'Editar Contato' in opcao:
         editar_contato(contatos)
-    elif opcao == 'Marcar/Desmarcar como Favorito':
+    elif 'Marcar/Desmarcar como Favorito' in opcao:
         favoritar_contato(contatos)
-    elif opcao == 'Visualizar Contatos Favoritos':
+    elif 'Visualizar Contatos Favoritos' in opcao:
         visualizar_contatos_favoritos(contatos)
-    elif opcao == 'Apagar Contato':
+    elif 'Apagar Contato' in opcao:
         deletar_contato(contatos)
-    elif opcao == 'Sair':
-        console.print("Saindo...", style="bold red")
+    elif 'Sair' in opcao:
+        console.print("Saindo do programa. Até logo!", style="red")
         break
-    else:
-        console.print("Opção inválida, tente novamente.", style="red")
-        input("Pressione Enter para continuar...")
-
